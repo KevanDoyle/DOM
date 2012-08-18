@@ -1,0 +1,19 @@
+\bf{Keyboard Events} \\ \cline{1-1}
+keydown & \href{http://www.w3schools.com/jsref/event_onkeydown.asp}{onkeydown} & The event occurs when the user is pressing a key or holding down a key //
+keypress & \href{http://www.w3schools.com/jsref/event_onkeypress.asp}{onkeypress} & The event occurs when the user is pressing a key or holding down a key //
+keyup & \href{http://www.w3schools.com/jsref/event_onkeyup.asp}{onkeyup} & The event occurs when a keyboard key is released //
+\bf{Frame/Object Events} \\ \cline{1-1}
+abort & onabort & The event occurs when an image is stopped from loading before completely loaded (for &lt;object&gt;) //
+error & onerror & The event occurs when an image does not load properly (for &lt;object&gt;, &lt;body&gt; and &lt;frameset&gt;) //
+load & \href{http://www.w3schools.com/jsref/event_onload.asp}{onload} & The event occurs when a document, frameset, or &lt;object&gt; has been loaded //
+resize & \href{http://www.w3schools.com/jsref/event_onresize.asp}{onresize} & The event occurs when a document view is resized //
+scroll & onscroll & The event occurs when a document view is scrolled //
+unload & \href{http://www.w3schools.com/jsref/event_onunload.asp}{onunload} & The event occurs when a document is removed from a window or frame (for &lt;body&gt; and &lt;frameset&gt;) //
+\bf{Form Events} \\ \cline{1-1}
+blur & \href{http://www.w3schools.com/jsref/event_onblur.asp}{onblur} & The event occurs when a form element loses focus //
+change & \href{http://www.w3schools.com/jsref/event_onchange.asp}{onchange} & The event occurs when the content of a form element, the selection, or the checked state have changed (for &lt;input&gt;, &lt;select&gt;, and &lt;textarea&gt;) //
+focus & \href{http://www.w3schools.com/jsref/event_onfocus.asp}{onfocus} & The event occurs when an element gets focus (for &lt;label&gt;, &lt;input&gt;, &lt;select&gt;, textarea&gt;, and &lt;button&gt;) //
+reset & onreset & The event occurs when a form is reset //
+select & \href{http://www.w3schools.com/jsref/event_onselect.asp}{onselect} & The event occurs when a user selects some&nbsp; text (for &lt;input&gt; and &lt;textarea&gt;) //
+submit & onsubmit & The event occurs when a form is submitted //
+

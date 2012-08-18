@@ -1,0 +1,301 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{printlen}
+\usepackage{layout}
+\usepackage{multicol}
+%\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{html}
+\usepackage[bookmarks=true,pdfborder={0 0 0},colorlinks]{hyperref}
+
+% ---------------------------------------------------------------------
+% Comments
+% ---------------------------------------------------------------------
+% Multiple columns on a page: -----------------------------------------
+% To line up content into columns of equal width in which 
+% the columns all contain the same number of lines, 
+% use the multicol package.
+% To line up content into columns of unequal width in which 
+% the columns don't have the same number of lines, 
+% place the content of each column into a minipage environment
+% (for which you specify a width), then create a tabular environment 
+% of one line which consists of fields which contain the minipages.
+%
+
+% ---------------------------------------------------------------------
+% Comments from the original author of the LaTeX cheatsheet
+% from whose .tex file I took the skeleton
+% ---------------------------------------------------------------------
+
+% To make this come out properly in landscape mode, do one of the following
+% 1.
+%  pdflatex latexsheet.tex
+%
+% 2.
+%  latex latexsheet.tex
+%  dvips -P pdf  -t landscape latexsheet.dvi
+%  ps2pdf latexsheet.ps
+
+
+% If you're reading this, be prepared for confusion.  Making this was
+% a learning experience for me, and it shows.  Much of the placement
+% was hacked in; if you make it better, let me know...
+
+
+% 2008-04
+% Changed page margin code to use the geometry package. Also added code for
+% conditional page margins, depending on paper size. Thanks to Uwe Ziegenhagen
+% for the suggestions.
+
+% 2006-08
+% Made changes based on suggestions from Gene Cooperman. <gene at ccs.neu.edu>
+
+
+% To Do:
+% \listoffigures \listoftables
+% \setcounter{secnumdepth}{0}
+
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\uselengthunit{in}
+
+% ---------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+
+
+
+% Main Title
+\begin{center}
+     \Large{\textbf{JavaScript Cheat Sheet}} \\
+\end{center}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+
+% ---------------------------------------------------------------------
+% DOM Elements
+% ---------------------------------------------------------------------
+\newcommand{\DOMelements}{
+\newlength{\widtha}\settowidth{\widtha}{XXXXXXXXXXXXXXX}
+\begin{minipage}[t]{\widtha}
+\section{DOM Elements}
+\begin{tabular*}{\widtha}[t]{@{}l@{}}
+\hline
+\end{tabular*}
+
+\href{http://www.w3schools.com/jsref/dom_obj_document.asp}{Document} \\
+\href{http://www.w3schools.com/jsref/dom_obj_event.asp}{Events} \\
+\href{http://www.w3schools.com/jsref/dom_obj_all.asp}{Elements} \\
+\href{http://www.w3schools.com/jsref/dom_obj_anchor.asp}{Anchor} \\
+\href{http://www.w3schools.com/jsref/dom_obj_area.asp}{Area} \\
+\href{http://www.w3schools.com/jsref/dom_obj_base.asp}{Base} \\
+\href{http://www.w3schools.com/jsref/dom_obj_body.asp}{Body} \\
+\href{http://www.w3schools.com/jsref/dom_obj_pushbutton.asp}{Button} \\
+\href{http://www.w3schools.com/jsref/dom_obj_form.asp}{Form} \\
+\href{http://www.w3schools.com/jsref/dom_obj_frame.asp}{Frame/IFrame} \\
+\href{http://www.w3schools.com/jsref/dom_obj_frameset.asp}{Frameset} \\
+\href{http://www.w3schools.com/jsref/dom_obj_image.asp}{Image} \\
+\href{http://www.w3schools.com/jsref/dom_obj_button.asp}{Input Button} \\
+\href{http://www.w3schools.com/jsref/dom_obj_checkbox.asp}{Input Checkbox} \\
+\href{http://www.w3schools.com/jsref/dom_obj_fileupload.asp}{Input File} \\
+\href{http://www.w3schools.com/jsref/dom_obj_hidden.asp}{Input Hidden} \\
+\href{http://www.w3schools.com/jsref/dom_obj_password.asp}{Input Password} \\
+\href{http://www.w3schools.com/jsref/dom_obj_radio.asp}{Input Radio} \\
+\href{http://www.w3schools.com/jsref/dom_obj_reset.asp}{Input Reset} \\
+\href{http://www.w3schools.com/jsref/dom_obj_submit.asp}{Input Submit} \\
+\href{http://www.w3schools.com/jsref/dom_obj_text.asp}{Input Text} \\
+\href{http://www.w3schools.com/jsref/dom_obj_link.asp}{Link} \\
+\href{http://www.w3schools.com/jsref/dom_obj_meta.asp}{Meta} \\
+\href{http://www.w3schools.com/jsref/dom_obj_object.asp}{Object} \\
+\href{http://www.w3schools.com/jsref/dom_obj_option.asp}{Option} \\
+\href{http://www.w3schools.com/jsref/dom_obj_select.asp}{Select} \\
+\href{http://www.w3schools.com/jsref/dom_obj_style.asp}{Style} \\
+\href{http://www.w3schools.com/jsref/dom_obj_table.asp}{Table} \\
+\href{http://www.w3schools.com/jsref/dom_obj_tabledata.asp}{td / th} \\
+\href{http://www.w3schools.com/jsref/dom_obj_tablerow.asp}{tr} \\
+\href{http://www.w3schools.com/jsref/dom_obj_textarea.asp}{Textarea}
+%\vfill\columnbreak
+\end{minipage}
+}	% End DOMelements newcommand
+
+% ---------------------------------------------------------------------
+% Element Object Methods
+% ---------------------------------------------------------------------
+\newcommand{\ElementObjectMethods}{
+\newlength{\widthb}\setlength{\widthb}{4in}
+\newlength{\widthbb}\setlength{\widthbb}{2in}
+\begin{minipage}[t]{\widthb}
+\section{Element Object Methods}
+\begin{tabular}[t]{@{}ll@{}}
+\hline
+\href{http://www.w3schools.com/jsref/met_element_getattribute.asp}{getAttribute()} & 
+		\parbox[t]{\widthbb}{Returns the specified attribute value} \\
+\href{http://www.w3schools.com/jsref/met_element_getattributens.asp}{getAttributeNS()} & 
+		\parbox[t]{\widthbb}{Returns the specified attribute value, with the specified namespace. For XML DOM only} \\
+\href{http://www.w3schools.com/jsref/met_element_getattributenode.asp}{getAttributeNode()} & 
+		\parbox[t]{\widthbb}{Returns the specified attribute node} \\
+\href{http://www.w3schools.com/jsref/met_element_getattributens.asp}{getAttributeNS()} & 
+		\parbox[t]{\widthbb}{Returns the specified attribute value, with the specified namespace. For XML DOM only} \\
+\href{http://www.w3schools.com/jsref/met_element_getattributenode.asp}{getAttributeNode()} & 
+		\parbox[t]{\widthbb}{Returns the specified attribute node} \\
+\href{http://www.w3schools.com/jsref/met_element_getattributenodens.asp}{getAttributeNodeNS()} & 
+		\parbox[t]{\widthbb}{Returns the specified attribute node, with the specified namespace. For XML DOM only} \\
+\href{http://www.w3schools.com/jsref/met_element_getelementsbytagname.asp}{getElementsByTagName()} & 
+		\parbox[t]{\widthbb}{Returns a collection of all child elements with the specified tagname} \\
+\href{http://www.w3schools.com/jsref/met_element_getelementsbytagnamens.asp}{getElementsByTagNameNS()} & 
+		\parbox[t]{\widthbb}{Returns a collection of all child elements with the specified tagname and namespace. For XML DOM only} \\
+\href{http://www.w3schools.com/jsref/met_element_hasattribute.asp}{hasAttribute()} & 
+		\parbox[t]{\widthbb}{Returns true if the element has the specified attribute, otherwise it returns false} \\
+\href{http://www.w3schools.com/jsref/met_element_hasattributens.asp}{hasAttributeNS()} & 
+		\parbox[t]{\widthbb}{Returns true if the element has the specified attribute, with the specified namespace, otherwise it returns false. For XML DOM only} \\
+\href{http://www.w3schools.com/jsref/met_element_removeattribute.asp}{removeAttribute()} & 
+		\parbox[t]{\widthbb}{Removes the specified attribute} \\
+\href{http://www.w3schools.com/jsref/met_element_removeattributens.asp}{removeAttributeNS()} & 
+		\parbox[t]{\widthbb}{Removes the attribute with the specified name and namespace. For XML DOM only} \\
+\href{http://www.w3schools.com/jsref/met_element_removeattributenode.asp}{removeAttributeNode()} & 
+		\parbox[t]{\widthbb}{Removes the specified attribute node, and returns the removed node} \\
+\href{http://www.w3schools.com/jsref/met_element_setattribute.asp}{setAttribute()} & 
+		\parbox[t]{\widthbb}{Sets or changes the specified attribute, to the specified value} \\
+\href{http://www.w3schools.com/jsref/met_element_setattributens.asp}{setAttributeNS()} & 
+		\parbox[t]{\widthbb}{Sets or changes the specified attribute, with the specified namespace, to the specified value. For XML DOM only} \\
+\href{http://www.w3schools.com/jsref/met_element_setattributenode.asp}{setAttributeNode()} & 
+		\parbox[t]{\widthbb}{Sets or changes the specified attribute node} \\
+\href{http://www.w3schools.com/jsref/met_element_setattributenodens.asp}{setAttributeNodeNS()} & 
+		\parbox[t]{\widthbb}{Sets or changes the specified attribute node} \\ 
+setIdAttribute() & \\
+setIdAttributeNS() & \\ 
+setIdAttributeNode() & \\
+\\
+\hline
+\end{tabular}
+\end{minipage}
+}	% End of ElementObjectMethods newcommand
+
+% ---------------------------------------------------------------------
+% Events
+% ---------------------------------------------------------------------
+\newcommand{\Events}{
+\newlength{\widthc}\setlength{\widthc}{3.25in}
+\newlength{\widthcc}\setlength{\widthcc}{2.5in}
+\begin{minipage}[t]{\widthc}
+\section{Events}
+\begin{tabular}[t]{@{}lll@{}}
+\hline
+\bf{Event} & \bf{Attribute} & \bf{Description} \\
+\bf{Mouse} \\ \cline{1-1}
+click & \href{http://www.w3schools.com/jsref/event_onclick.asp}{onclick} 
+    & \parbox{\widthcc}{user clicks on an element} \\
+dblclick & \href{http://www.w3schools.com/jsref/event_ondblclick.asp}{ondblclick} 
+    & \parbox{\widthcc}{user double-clicks on an element} \\
+mousedown & \href{http://www.w3schools.com/jsref/event_onmousedown.asp}{onmousedown} 
+    & \parbox{\widthcc}{user presses a mouse button over an element} \\
+mousemove & \href{http://www.w3schools.com/jsref/event_onmousemove.asp}{onmousemove} 
+    & \parbox{\widthcc}{user moves the mouse pointer over an element} \\
+mouseover & \href{http://www.w3schools.com/jsref/event_onmouseover.asp}{onmouseover} 
+    & \parbox{\widthcc}{user mouse over an element} \\
+mouseout & \href{http://www.w3schools.com/jsref/event_onmouseout.asp}{onmouseout} 
+    & \parbox{\widthcc}{user moves the mouse pointer out of an element} \\
+mouseup & \href{http://www.w3schools.com/jsref/event_onmouseup.asp}{onmouseup} 
+    & \parbox{\widthcc}{user releases a mouse button over an element} \\
+\bf{Keyboard} \\ \cline{1-1}
+keydown & \href{http://www.w3schools.com/jsref/event_onkeydown.asp}{onkeydown} 
+    & \parbox{\widthcc}{The event occurs when the user is pressing a key or holding down a key} \\
+keypress & \href{http://www.w3schools.com/jsref/event_onkeypress.asp}{onkeypress} 
+    & \parbox{\widthcc}{The event occurs when the user is pressing a key or holding down a key} \\
+keyup & \href{http://www.w3schools.com/jsref/event_onkeyup.asp}{onkeyup} 
+    & \parbox{\widthcc}{The event occurs when a keyboard key is released} \\
+\bf{Frame/Object} \\ \cline{1-1}
+abort & onabort 
+    & \parbox{\widthcc}{The event occurs when an image is stopped from loading before completely loaded (for $<$object$>$)} \\
+error & onerror 
+    & \parbox{\widthcc}{The event occurs when an image does not load properly (for $<$object$>$, $<$body$>$ and $<$frameset$>$)} \\
+load & \href{http://www.w3schools.com/jsref/event_onload.asp}{onload} 
+    & \parbox{\widthcc}{The event occurs when a document, frameset, or $<$object$>$ has been loaded} \\
+resize & \href{http://www.w3schools.com/jsref/event_onresize.asp}{onresize} 
+    & \parbox{\widthcc}{The event occurs when a document view is resized} \\
+scroll & onscroll 
+    & \parbox{\widthcc}{The event occurs when a document view is scrolled} \\
+unload & \href{http://www.w3schools.com/jsref/event_onunload.asp}{onunload} 
+    & \parbox{\widthcc}{The event occurs when a document is removed from a window or frame (for $<$body$>$ and $<$frameset$>$)} \\
+\bf{Form} \\ \cline{1-1}
+blur & \href{http:\\www.w3schools.com/jsref/event_onblur.asp}{onblur} 
+    & \parbox{\widthcc}{The event occurs when a form element loses focus} \\
+change & \href{http:\\www.w3schools.com/jsref/event_onchange.asp}{onchange} 
+    & \parbox{\widthcc}{The event occurs when the content of a form element, the selection, or the checked state have changed (for $<$input$>$, $<$select$>$, and $<$textarea$>$)} \\
+focus & \href{http:\\www.w3schools.com/jsref/event_onfocus.asp}{onfocus} 
+    & \parbox{\widthcc}{The event occurs when an element gets focus (for $<$label$>$, $<$input$>$, $<$select$>$, textarea$>$, and $<$button$>$)} \\
+reset & onreset 
+    & \parbox{\widthcc}{The event occurs when a form is reset} \\
+select & \href{http:\\www.w3schools.com/jsref/event_onselect.asp}{onselect} 
+    & \parbox{\widthcc}{The event occurs when a user selects some\  text (for $<$input$>$ and $<$textarea$>$)} \\
+submit & onsubmit 
+    & \parbox{\widthcc}{The event occurs when a form is submitted} \\
+\hline
+\end{tabular}
+\end{minipage}
+}	% End of Events newcommand
+
+% ---------------------------------------------------------------------
+% ---------------------------------------------------------------------
+% Main Table I
+% ---------------------------------------------------------------------
+% ---------------------------------------------------------------------
+
+\begin{tabular}[t]{@{}lll@{}}
+\DOMelements
+&
+\ElementObjectMethods
+&
+\Events
+\end{tabular}
+\end{document}

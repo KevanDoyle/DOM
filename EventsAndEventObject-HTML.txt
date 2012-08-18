@@ -1,0 +1,432 @@
+#---------------------------------------------------------------------
+# Find and Replace Regexs for DOM Four Column Tables
+#---------------------------------------------------------------------
+Get rid of headers
+  <tr>\n.*?Event</th>\n.*?\n.*?\n.*?\n.*</tr>\n
+Replace with
+
+
+Get rid of DOM Element
+.*?<td>\d</td>\n
+Replace with 
+
+
+Get rid of non-existent DOM Elemnt
+.*?<td>&nbsp;</td>\n
+Replace with 
+
+
+Get rid of line breaks with a single <td> element
+	(doesn't work for all of them)
+ctrl-, .*?\w
+up-arrow
+ctrl-j; backspace	# combines lines 
+
+Combine three lines into one tabular row
+.*?<tr>\n.*?<td>(.*?)</td>\n.*?<td>(.*?)</td>\n.*?<td>(.*?)</td>\n.*?</tr>
+Replace with
+$1 & $2 & \n    \\parbox{widthc}{$3} \\\\
+
+Edit <a href...
+<a href="(.*?)">(.*?)</a>
+Replace with
+\\href{http://www.w3schools.com/jsref/$1}{$2}
+
+Transform Section Headers
+<h2>(.*?)</h2>\n
+Replace with
+\\bf{$1} \\\\ \\cline{1-1}
+
+Get rid of <tables...
+.*?<table.*?\n
+Replace with
+
+
+Get rid of <tables...
+.*?</table\n
+Replace with
+
+
+
+#---------------------------------------------------------------------
+
+<table class="reference" id="table2">
+  <tr>
+    <th width="20%" align="left">Event</th>
+    <th width="20%" align="left">Attribute</th>
+    <th width="54%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+  <tr>
+	<td>keydown</td>
+	<td><a href="event_onkeydown.asp">onkeydown</a></td>
+	<td>The event occurs when the user is pressing a key or holding down a key</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>keypress</td>
+	<td><a href="event_onkeypress.asp">onkeypress</a></td>
+	<td>The event occurs when the user is pressing a key or holding down a key</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>keyup</td>
+	<td><a href="event_onkeyup.asp">onkeyup</a></td>
+	<td>The event occurs when a keyboard key is released</td>
+    <td>2</td>
+  </tr>
+  </table>
+
+<h2>Frame/Object Events</h2>
+
+<table class="reference">
+  <tr>
+    <th width="20%" align="left">Event</th>
+    <th width="20%" align="left">Attribute</th>
+    <th width="54%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+  <tr>
+	<td>abort</td>
+	<td>onabort</td>
+	<td>The event occurs when an image is stopped from loading before 
+	completely loaded (for &lt;object&gt;)</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>error</td>
+	<td>onerror</td>
+	<td>The event occurs when an image does not load properly (for &lt;object&gt;, 
+	&lt;body&gt; and &lt;frameset&gt;)</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+	<td>load</td>
+	<td><a href="event_onload.asp">onload</a></td>
+	<td>The event occurs when a document, frameset, or &lt;object&gt; has been loaded</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>resize</td>
+	<td><a href="event_onresize.asp">onresize</a></td>
+	<td>The event occurs when a document view is resized</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>scroll</td>
+	<td>onscroll</td>
+	<td>The event occurs when a document view is scrolled</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>unload</td>
+	<td><a href="event_onunload.asp">onunload</a></td>
+	<td>The event occurs when a document is removed from a window or frame (for 
+	&lt;body&gt; and &lt;frameset&gt;)</td>
+    <td>2</td>
+  </tr>
+</table>
+
+<h2>Form Events</h2>
+<table class="reference">
+  <tr>
+    <th width="20%" align="left">Event</th>
+    <th width="20%" align="left">Attribute</th>
+    <th width="54%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+  <tr>
+	<td>blur</td>
+	<td><a href="event_onblur.asp">onblur</a></td>
+	<td>The event occurs when a form element loses focus</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>change</td>
+	<td><a href="event_onchange.asp">onchange</a></td>
+	<td>The event occurs when the content of a form element, the selection, or the 
+	checked state have changed (for &lt;input&gt;, &lt;select&gt;, and &lt;textarea&gt;)</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>focus</td>
+	<td><a href="event_onfocus.asp">onfocus</a></td>
+	<td>The event occurs when an element gets focus (for &lt;label&gt;, &lt;input&gt;, 
+	&lt;select&gt;, textarea&gt;, and &lt;button&gt;)</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>reset</td>
+	<td>onreset</td>
+	<td>The event occurs when a form is reset</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>select</td>
+	<td><a href="event_onselect.asp">onselect</a></td>
+	<td>The event occurs when a user selects some&nbsp; text (for &lt;input&gt; and &lt;textarea&gt;)</td>
+    <td>2</td>
+  </tr>
+  <tr>
+	<td>submit</td>
+	<td>onsubmit</td>
+	<td>The event occurs when a form is submitted</td>
+    <td>2</td>
+  </tr>
+</table>
+
+<h2>Event Object</h2>
+
+<h3>Constants</h3>
+<table class="reference" id="table5">
+  <tr>
+    <th width="20%" align="left">Constant</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+	<tr>
+		<td>AT_TARGET</td>
+		<td>The current event is in the target phase, i.e. it is being evaluated 
+		at the event target (1)</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td>BUBBLING_PHASE</td>
+		<td>The current event phase is the bubbling phase (2)</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td>CAPTURING_PHASE</td>
+		<td>The current event phase is the capture phase (3)</td>
+		<td>2</td>
+  </tr>
+	</table>
+
+<h3>Properties</h3>
+<table class="reference">
+  <tr>
+    <th width="20%" align="left">Property</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+	<tr>
+		<td><a href="event_bubbles.asp">bubbles</a></td>
+		<td>Returns whether or not an event is a bubbling event</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_cancelable.asp">cancelable</a></td>
+		<td>Returns whether or not an event can have its default action prevented</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_currenttarget.asp">currentTarget</a></td>
+		<td>Returns the element whose event listeners triggered the event</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td>eventPhase</td>
+		<td>Returns which phase of the event flow is currently being evaluated</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_target.asp">target</a></td>
+		<td>Returns the element that triggered the event</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_timestamp.asp">timeStamp</a></td>
+		<td>Returns the time (in milliseconds relative to the epoch) at which 
+		the event was created</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_type.asp">type</a></td>
+		<td>Returns the name of the event</td>
+		<td>2</td>
+  </tr>
+  </table>
+
+<h3>Methods</h3>
+<table class="reference" id="table3">
+  <tr>
+    <th width="20%" align="left">Method</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+	<tr>
+		<td>initEvent()</td>
+		<td>Specifies the event type, whether or not the event can bubble, 
+		whether or not the event's default action can be prevented</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td>preventDefault()</td>
+		<td>To cancel the event if it is cancelable, meaning that any default 
+		action normally taken by the implementation as a result of the event 
+		will not occur</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td>stopPropagation()</td>
+		<td>To prevent further propagation of an event during event flow</td>
+		<td>2</td>
+  </tr>
+	</table>
+
+<h2>EventTarget Object</h2>
+<h3>Methods</h3>
+<table class="reference" id="table4">
+  <tr>
+    <th width="20%" align="left">Method</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+	<tr>
+		<td>addEventListener()</td>
+		<td>Allows the registration of event listeners on the event target (IE8 
+		= attachEvent())</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td>dispatchEvent()</td>
+		<td>Allows to send the event to the subscribed event listeners (IE8 = 
+		fireEvent())</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td>removeEventListener()</td>
+		<td>Allows the removal of event listeners on the event target (IE8 = 
+		detachEvent())</td>
+		<td>2</td>
+  </tr>
+	</table>
+
+<h2>EventListener Object</h2>
+<h3>Methods</h3>
+<table class="reference" id="table6">
+  <tr>
+    <th width="20%" align="left">Method</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+	<tr>
+		<td>handleEvent()</td>
+		<td>Called whenever an event occurs of the event type for which the 
+		EventListener interface was registered</td>
+		<td>2</td>
+  </tr>
+	</table>
+
+<h2>DocumentEvent Object</h2>
+<h3>Methods</h3>
+<table class="reference" id="table7">
+  <tr>
+    <th width="20%" align="left">Method</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+	<tr>
+		<td>createEvent()</td>
+		<td>&nbsp;</td>
+		<td>2</td>
+  </tr>
+	</table>
+
+<h2>MouseEvent/KeyboardEvent Object</h2>
+<h3>Properties</h3>
+<table class="reference">
+  <tr>
+    <th width="20%" align="left">Property</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">DOM</th>
+  </tr>
+  <tr>
+		<td><a href="event_altkey.asp">altKey</a></td>
+		<td>Returns whether or not the &quot;ALT&quot; key was 
+		pressed when an event was triggered</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_button.asp">button</a></td>
+		<td>Returns which mouse button was clicked when an event 
+		was triggered</td>
+		<td>2</td>
+  </tr>
+  <tr>
+		<td><a href="event_clientx.asp">clientX</a></td>
+		<td>Returns the horizontal coordinate of the mouse pointer, relative to 
+		the current window, 
+		when an event was triggered</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_clienty.asp">clientY</a></td>
+		<td>Returns the vertical coordinate of the mouse pointer, relative to 
+		the current window, 
+		when an event was triggered</td>
+		<td>2</td>
+  </tr>
+	<tr>
+		<td><a href="event_ctrlkey.asp">ctrlKey</a></td>
+		<td>Returns whether or not the &quot;CTRL&quot; key was pressed when 
+		an event was triggered</td>
+		<td>2</td>
+  </tr>
+  <tr>
+		<td>keyIdentifier</td>
+		<td>Returns the identifier of a key</td>
+		<td>3</td>
+  </tr>
+  <tr>
+		<td>keyLocation</td>
+		<td>Returns the location of the key on the advice</td>
+		<td>3</td>
+  </tr>
+  <tr>
+		<td><a href="event_metakey.asp">metaKey</a></td>
+		<td>Returns whether or not the &quot;meta&quot; key was pressed when an event was triggered</td>
+		<td>2</td>
+  </tr>
+  <tr>
+		<td><a href="event_relatedtarget.asp">relatedTarget</a></td>
+		<td>Returns the element related to the element that triggered the event</td>
+		<td>2</td>
+  </tr>
+  <tr>
+		<td><a href="event_screenx.asp">screenX</a></td>
+		<td>Returns the horizontal coordinate of the mouse pointer, relative to 
+		the screen, when an event was triggered</td>
+		<td>2</td>
+  </tr>
+  <tr>
+		<td><a href="event_screeny.asp">screenY</a></td>
+		<td>Returns the vertical coordinate of the mouse pointer, relative to 
+		the screen, when an event was triggered</td>
+		<td>2</td>
+  </tr>
+  <tr>
+		<td><a href="event_shiftkey.asp">shiftKey</a></td>
+		<td>Returns whether or not the &quot;SHIFT&quot; key was pressed when an event was triggered</td>
+		<td>2</td>
+  </tr>
+  </table>
+
+<h3>Methods</h3>
+<table class="reference" id="table8">
+  <tr>
+    <th width="20%" align="left">Method</th>
+    <th width="74%" align="left">Description</th>
+    <th width="6%" align="left">W3C</th>
+  </tr>
+  <tr>
+		<td>initMouseEvent()</td>
+		<td>Initializes the value of a MouseEvent object</td>
+		<td>2</td>
+  </tr>
+  <tr>
+		<td>initKeyboardEvent()</td>
+		<td>Initializes the value of a KeyboardEvent object</td>
+		<td>3</td>
+  </tr>
+
