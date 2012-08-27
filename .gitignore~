@@ -1,0 +1,12 @@
+
+*.aux
+
+*.log
+
+*.out
+
+*.pdf
+
+*.tex~
+
+.gitignore
